@@ -1,0 +1,20 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Roboto', sans-serif; */
+  background-color: #f5f5f5;
+}
+
+--breakpoint-md: 768px;
+--sp-layout-height: 100vh !important;
+
+@media (min-width: var(--breakpoint-md)) {
+  .responsive {
+    flex-direction: column;
+  }
+}
+@media (max-width: var(--breakpoint-md)) {
+  .responsive {
+    flex-direction: row;
+  }
+}
