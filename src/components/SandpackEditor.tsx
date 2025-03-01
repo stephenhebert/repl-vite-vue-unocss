@@ -17,15 +17,25 @@ import { SandpackToolbar } from './SandpackToolbar';
 export const SandpackEditor = () => {
   // const { code, updateCode } = useActiveCode();
   const { sandpack } = useSandpack()
-  const { activeFile, visibleFiles, files } = sandpack
+  const { 
+    // activeFile, 
+    // visibleFiles,
+    files 
+  } = sandpack
 
   useEffect(() => {
     const state = { 
       // activeFile, 
       // visibleFiles, 
-      files 
+      files,
+      lastModified: Date.now(),
     }
-    setState(state)
+    try {
+      setState(state)
+    }
+    catch (error) {
+      console.error('Error saving state: ', error)
+    }
   })
   
 
