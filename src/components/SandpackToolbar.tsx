@@ -23,14 +23,36 @@ export const SandpackToolbar = () => {
 
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '0.5rem',
+        borderBottom: '1px solid #ccc',
+        fontSize: '0.75rem',
+        minHeight: '42px',
+        backgroundColor: 'var(--sp-colors-surface5)',
+      }}
+    >
       {
         lastModified &&
-        <span>Last Modified: { new Date(lastModified).toLocaleString() }</span>
+        <span
+          style={{
+            color: 'var(--sp-colors-base)',
+          }}
+        >Last Modified: { new Date(lastModified).toLocaleString() }</span>
       }
-      <button onClick={ undoChanges }>Undo Changes</button>
-      <button onClick={ resetToDefault }>Reset to Default Project</button>
-      <SandpackToolbarShare />
+      <div
+        style={{
+          display: 'flex',
+          gap: '0.25rem',
+        }}
+      >
+        <button onClick={ undoChanges }>Undo Changes</button>
+        <button onClick={ resetToDefault }>Reset to Default Project</button>
+        <SandpackToolbarShare />
+      </div>
     </div>
   )
 }
