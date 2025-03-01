@@ -12,7 +12,7 @@ export const Sandpack = () => {
   const state = getState()
   const { 
     files, 
-  } = state
+  } = state || {}
 
   return (
     <SandpackProvider
