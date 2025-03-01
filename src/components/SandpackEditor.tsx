@@ -11,7 +11,10 @@ import {
   SandpackCodeEditor,
 } from '@codesandbox/sandpack-react';
 import { SandpackFileExplorer } from 'sandpack-file-explorer';
-import { useEffect } from 'react';
+import { 
+  useRef,
+  useEffect 
+} from 'react';
 import { SandpackToolbar } from './SandpackToolbar';
 
 export const SandpackEditor = () => {
@@ -23,7 +26,18 @@ export const SandpackEditor = () => {
     files 
   } = sandpack
 
+  // TODO: improve this hacky solution
+  // use document DOMContentLoaded event?
+  const isFirstRender = useRef(true);
+  setTimeout(() => {
+    isFirstRender.current = false;
+  }, 1000);
+
   useEffect(() => {
+    if (isFirstRender.current) {
+      return;
+    }
+
     const state = { 
       // activeFile, 
       // visibleFiles, 
@@ -36,8 +50,8 @@ export const SandpackEditor = () => {
     catch (error) {
       console.error('Error saving state: ', error)
     }
-  })
-  
+
+  }, [files]);
 
   return (
     <SandpackStack style={{ height: "100vh", margin: 0 }}>
